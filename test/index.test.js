@@ -1,4 +1,4 @@
-import { call, callEffectMiddleware } from "./index";
+import { call, callEffectMiddleware } from "../src/index";
 
 describe("callEffectMiddleware", () => {
   const next = jest.fn();

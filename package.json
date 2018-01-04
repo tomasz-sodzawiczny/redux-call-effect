@@ -8,6 +8,13 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "jest": "^22.0.4"
+    "jest": "^22.0.4",
+    "rimraf": "^2.6.2"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "babel src --out-dir lib",
+    "test": "jest",
+    "prepublish": "npm run clean && npm run test && npm run build"
   }
 }
