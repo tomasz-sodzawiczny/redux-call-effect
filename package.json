@@ -1,0 +1,13 @@
+{
+  "name": "redux-call-effect",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:tomasz-sodzawiczny/redux-call-effect.git",
+  "author": "Tomasz Sodzawiczny <tomasz.sodzawiczny@brainly.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^22.0.4"
+  }
+}
