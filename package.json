@@ -1,8 +1,10 @@
 {
   "name": "redux-call-effect",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "lib/index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "repository": "git@github.com:tomasz-sodzawiczny/redux-call-effect.git",
   "author": "Tomasz Sodzawiczny <tomasz.sodzawiczny@brainly.com>",
   "license": "MIT",
