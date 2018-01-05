@@ -1,11 +1,12 @@
 {
   "name": "redux-call-effect",
+  "description": "Declarative way to call action creators",
   "version": "0.1.0",
   "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "repository": "git@github.com:tomasz-sodzawiczny/redux-call-effect.git",
+  "homepage": "https://github.com/tomasz-sodzawiczny/redux-call-effect",
+  "keywords": ["redux", "middleware", "redux-call-effect", "call", "effects"],
   "author": "Tomasz Sodzawiczny <tomasz.sodzawiczny@brainly.com>",
   "license": "MIT",
   "devDependencies": {

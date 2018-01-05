@@ -1,5 +1,8 @@
 # redux-call-effect
 
+[![npm](https://img.shields.io/npm/v/redux-call-effect.svg)](https://www.npmjs.com/package/redux-call-effect)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 A declarative way to call action creators.
 
 ```
