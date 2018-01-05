@@ -2,6 +2,10 @@
 
 A declarative way to call action creators.
 
+```
+npm install --save redux-call-effect
+```
+
 ```js
 import { call } from 'redux-call-effect';
 
@@ -38,6 +42,7 @@ We cannot easily check if a correct thunk was dispatched. `redux-call-effect` to
 
 ```js
 // Source:
+const onResultSaved => result => dispatch => {/* ... */};
 
 const saveResult = result => dispatch => {
   /* ... */
@@ -53,7 +58,9 @@ test('saveResult() dispatches postResult', () => {
 
 ## Installation
 
-> TODO: npm package
+```
+npm install --save redux-call-effect
+```
 
 Before you can use `call` you have to inject the middleware with [`applyMiddleware`](http://redux.js.org/docs/api/applyMiddleware.html):
 
