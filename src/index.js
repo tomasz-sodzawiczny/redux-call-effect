@@ -1,13 +1,13 @@
 const CALL =
-  typeof Symbol === "function" ? Symbol("call") : "@@redux-call-effect/call";
+  typeof Symbol === 'function' ? Symbol('call') : '@@redux-call-effect/call';
 
 export function call(func, ...params) {
   return {
     type: CALL,
     payload: {
       func,
-      params
-    }
+      params,
+    },
   };
 }
 

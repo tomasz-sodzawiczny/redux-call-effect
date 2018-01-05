@@ -1,6 +1,6 @@
-import { call, callEffectMiddleware } from "../src/index";
+import { call, callEffectMiddleware } from '../src/index';
 
-describe("callEffectMiddleware", () => {
+describe('callEffectMiddleware', () => {
   const dispatch = jest.fn();
   const next = jest.fn();
   const middleware = callEffectMiddleware({ dispatch })(next);
@@ -10,8 +10,8 @@ describe("callEffectMiddleware", () => {
     next.mockClear();
   });
 
-  it("passes through ordinary actions", () => {
-    const action = { type: "foo", payload: "bar" };
+  it('passes through ordinary actions', () => {
+    const action = { type: 'foo', payload: 'bar' };
 
     middleware(action);
 
@@ -20,8 +20,8 @@ describe("callEffectMiddleware", () => {
     expect(dispatch).toHaveBeenCalledTimes(0);
   });
 
-  it("passes through thunks", () => {
-    const action = () => "foo";
+  it('passes through thunks', () => {
+    const action = () => 'foo';
 
     middleware(action);
 
@@ -30,8 +30,8 @@ describe("callEffectMiddleware", () => {
     expect(dispatch).toHaveBeenCalledTimes(0);
   });
 
-  it("`call`s action creator with no params", () => {
-    const actionCreator = () => ({ type: "foo", payload: "bar" });
+  it('`call`s action creator with no params', () => {
+    const actionCreator = () => ({ type: 'foo', payload: 'bar' });
 
     middleware(call(actionCreator));
 
@@ -40,23 +40,23 @@ describe("callEffectMiddleware", () => {
     expect(next).toHaveBeenCalledTimes(0);
   });
 
-  it("`call`s action creator with params", () => {
+  it('`call`s action creator with params', () => {
     const actionCreator = (type, payload) => ({ type, payload });
 
-    middleware(call(actionCreator, "foo", "bar"));
+    middleware(call(actionCreator, 'foo', 'bar'));
 
     expect(dispatch).toHaveBeenCalledTimes(1);
-    expect(dispatch).toHaveBeenCalledWith(actionCreator("foo", "bar"));
+    expect(dispatch).toHaveBeenCalledWith(actionCreator('foo', 'bar'));
     expect(next).toHaveBeenCalledTimes(0);
   });
 });
 
-describe("call", () => {
-  it("returns deep equal objects when called multiple times with the same params", () => {
+describe('call', () => {
+  it('returns deep equal objects when called multiple times with the same params', () => {
     const actionCreator = () => undefined;
 
-    expect(call(actionCreator, "foo", "bar")).toEqual(
-      call(actionCreator, "foo", "bar")
+    expect(call(actionCreator, 'foo', 'bar')).toEqual(
+      call(actionCreator, 'foo', 'bar')
     );
   });
 });

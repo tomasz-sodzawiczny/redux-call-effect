@@ -3,7 +3,7 @@
 A declarative way to call action creators.
 
 ```js
-import { call } from "redux-call-effect";
+import { call } from 'redux-call-effect';
 
 // Before:
 dispatch(doAction(param1, param2));
@@ -22,12 +22,12 @@ In some cases calling action creators imperatively makes testing virtually impos
 const onResultSaved => result => dispatch => {/* ... */};
 
 const saveResult = result => dispatch => {
-    /* ... */
-    dispatch(onResultSaved(result));
+  /* ... */
+  dispatch(onResultSaved(result));
 };
 
 // Test:
-test("saveResult() dispatches postResult", () => {
+test('saveResult() dispatches postResult', () => {
   saveResult(result)(dispatch);
   // Cannot do that, onResultSaved() returns a new function every time!
   expect(dispatch).toHaveBeenCalledWith(onResultSaved(result)); // Error!
@@ -38,15 +38,14 @@ We cannot easily check if a correct thunk was dispatched. `redux-call-effect` to
 
 ```js
 // Source:
-const onResultSaved => result => dispatch => {/* ... */};
 
 const saveResult = result => dispatch => {
-    /* ... */
-    dispatch(call(onResultSaved, result));
+  /* ... */
+  dispatch(call(onResultSaved, result));
 };
 
 // Test:
-test("saveResult() dispatches postResult", () => {
+test('saveResult() dispatches postResult', () => {
   saveResult(result)(dispatch);
   expect(dispatch).toHaveBeenCalledWith(call(onResultSaved, result)); // Works!
 });
@@ -59,9 +58,9 @@ test("saveResult() dispatches postResult", () => {
 Before you can use `call` you have to inject the middleware with [`applyMiddleware`](http://redux.js.org/docs/api/applyMiddleware.html):
 
 ```js
-import { createStore, applyMiddleware } from "redux";
-import { callEffectMiddleware } from "redux-call-effect";
-import reducer from "./reducer";
+import { createStore, applyMiddleware } from 'redux';
+import { callEffectMiddleware } from 'redux-call-effect';
+import reducer from './reducer';
 
 const store = createStore(reducer, applyMiddleware(callEffectMiddleware));
 ```
