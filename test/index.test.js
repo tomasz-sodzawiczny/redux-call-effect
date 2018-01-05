@@ -1,10 +1,12 @@
 import { call, callEffectMiddleware } from "../src/index";
 
 describe("callEffectMiddleware", () => {
+  const dispatch = jest.fn();
   const next = jest.fn();
-  const middleware = callEffectMiddleware()(next);
+  const middleware = callEffectMiddleware({ dispatch })(next);
 
   beforeEach(() => {
+    dispatch.mockClear();
     next.mockClear();
   });
 
@@ -15,6 +17,7 @@ describe("callEffectMiddleware", () => {
 
     expect(next).toHaveBeenCalledTimes(1);
     expect(next).toHaveBeenCalledWith(action);
+    expect(dispatch).toHaveBeenCalledTimes(0);
   });
 
   it("passes through thunks", () => {
@@ -24,6 +27,7 @@ describe("callEffectMiddleware", () => {
 
     expect(next).toHaveBeenCalledTimes(1);
     expect(next).toHaveBeenCalledWith(action);
+    expect(dispatch).toHaveBeenCalledTimes(0);
   });
 
   it("`call`s action creator with no params", () => {
@@ -31,8 +35,9 @@ describe("callEffectMiddleware", () => {
 
     middleware(call(actionCreator));
 
-    expect(next).toHaveBeenCalledTimes(1);
-    expect(next).toHaveBeenCalledWith(actionCreator());
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(actionCreator());
+    expect(next).toHaveBeenCalledTimes(0);
   });
 
   it("`call`s action creator with params", () => {
@@ -40,8 +45,9 @@ describe("callEffectMiddleware", () => {
 
     middleware(call(actionCreator, "foo", "bar"));
 
-    expect(next).toHaveBeenCalledTimes(1);
-    expect(next).toHaveBeenCalledWith(actionCreator("foo", "bar"));
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(actionCreator("foo", "bar"));
+    expect(next).toHaveBeenCalledTimes(0);
   });
 });
 

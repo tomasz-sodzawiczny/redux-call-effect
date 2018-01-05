@@ -11,10 +11,10 @@ export function call(func, ...params) {
   };
 }
 
-export const callEffectMiddleware = () => next => action => {
+export const callEffectMiddleware = ({ dispatch }) => next => action => {
   if (action.type === CALL) {
     const { func, params } = action.payload;
-    return next(func(...params));
+    return dispatch(func(...params));
   }
 
   return next(action);
