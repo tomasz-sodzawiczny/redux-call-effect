@@ -1,4 +1,4 @@
-# redux-call-effect
+redux-call-effect
 
 [![npm](https://img.shields.io/npm/v/redux-call-effect.svg)](https://www.npmjs.com/package/redux-call-effect)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -26,7 +26,9 @@ In some cases calling action creators imperatively makes testing virtually impos
 
 ```js
 // Source:
-const onResultSaved => result => dispatch => {/* ... */};
+const onResultSaved = result => dispatch => {
+  /* ... */
+};
 
 const saveResult = result => dispatch => {
   /* ... */
@@ -45,7 +47,9 @@ We cannot easily check if a correct thunk was dispatched. `redux-call-effect` to
 
 ```js
 // Source:
-const onResultSaved => result => dispatch => {/* ... */};
+const onResultSaved = result => dispatch => {
+  /* ... */
+};
 
 const saveResult = result => dispatch => {
   /* ... */
