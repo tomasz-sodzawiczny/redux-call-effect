@@ -18,15 +18,18 @@
   "author": "Tomasz Sodzawiczny <tomasz.sodzawiczny@brainly.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "jest": "^22.0.4",
-    "rimraf": "^2.6.2"
+    "@babel/cli": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "jest": "^24.9.0",
+    "rimraf": "^3.0.0"
   },
   "scripts": {
     "clean": "rimraf lib",
     "build": "babel src --out-dir lib",
     "test": "jest",
     "prepublish": "npm run clean && npm run test && npm run build"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
